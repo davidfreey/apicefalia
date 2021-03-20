@@ -6,15 +6,15 @@
  */
 
 const axios = require("axios")
-const netlifyWebhook = strapi.config.get("custom.netlifyWebhook")
+ const netlifyWebhook = strapi.config.get('custom.netlifyWebhook')
 
 module.exports = {
-  lifecycle: {
+  lifecycles: {
     async afterCreate(_, __) {
-      netlifyWebhook && axios.post(netlifyWebhook)
+      await axios.post(netlifyWebhook)
     },
     async afterUpdate(_, __, ___) {
-      netlifyWebhook && axios.post(netlifyWebhook)
+      await axios.post(netlifyWebhook)
     }
   }
 };
