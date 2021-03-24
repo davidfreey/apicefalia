@@ -11,10 +11,10 @@ const axios = require("axios")
 module.exports = {
   lifecycles: {
     async afterCreate(_, __) {
-      await axios.post(netlifyWebhook)
+      await netlifyWebhook && axios.post(netlifyWebhook)
     },
     async afterUpdate(_, __, ___) {
-      await axios.post(netlifyWebhook)
+      await netlifyWebhook && axios.post(netlifyWebhook)
     }
   }
 };
